@@ -1,0 +1,19 @@
+{
+    "name": "dasturchiuz/hemisapi",
+    "description": "Hemis Api helper",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dasturchiuz\\Hemisapi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dasturchiuz",
+            "email": "dasturchiuz@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
