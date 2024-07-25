@@ -161,4 +161,30 @@ class HemisBackendApi{
             return $exception;
         }
     }
+
+    public  function getEmployeeList($type="employee", $limit=100, $page=1)
+    {
+        $url = "/rest/v1/data/employee-list";
+        try {
+            $response =  $this->getReqest($url, ['type'=>$type, 'limit'=>$limit, 'page'=>$page]);
+            if($response->getStatusCode()==200){
+                $resBody = $response->getBody();
+                $dataClass = $resBody->getContents();
+                return new ApiResponse(json_decode($dataClass), function ($data){
+                    if($data){
+                        return count($data->items) > 0 ? $data->items : null;
+                    }
+                    return null;
+                });
+            }else{
+                $resBody = $response->getBody();
+                $dataClass = $resBody->getContents();
+                $res = json_decode($dataClass);
+                return $res->error;
+            }
+        }catch (\Exception $exception)
+        {
+            return $exception;
+        }
+    }
 }
